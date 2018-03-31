@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Ricardo Alcantara</Authors>
+    <PackageProjectUrl>https://github.com/ricardoalcantara/ODataSimpleFilterImplementation</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ricardoalcantara/ODataSimpleFilterImplementation</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>OData Simple Filter MongoDB</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
