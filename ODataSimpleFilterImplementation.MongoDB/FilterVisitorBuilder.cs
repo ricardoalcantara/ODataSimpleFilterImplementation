@@ -17,7 +17,7 @@ namespace ODataSimpleFilterImplementation.MongoDB
         public override FilterDefinition<T> VisitStringOp([NotNull] FilterParser.StringOpContext context)
         {
             string id = context.ID().GetText();
-            string str = context.STRING().GetText().Trim('\'');
+            string str = (context.STRING() ?? context.EMPTY()).GetText().Trim('\'');
 
             var op = context.op.Type;
             switch (op)
@@ -79,7 +79,16 @@ namespace ODataSimpleFilterImplementation.MongoDB
         {
             string id = context.ID().GetText();
 
-            return _builder.Eq<string>(id, null);
+            var op = context.op.Type;
+            switch (op)
+            {
+                case FilterParser.EQ:
+                    return _builder.Eq<string>(id, null);
+                case FilterParser.NE:
+                    return _builder.Ne<string>(id, null);
+                default:
+                    throw new InvalidOperationException($"Invalid StringOp {context.GetText()}");
+            }
         }
 
         public override FilterDefinition<T> VisitAnd([NotNull] FilterParser.AndContext context)

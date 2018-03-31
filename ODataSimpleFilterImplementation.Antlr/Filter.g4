@@ -4,9 +4,9 @@ filter  :     expr+ ;
 
 expr    :   expr op='and' expr                                                                  # And
         |   expr op='or' expr                                                                   # Or
-        |   ID op=('eq'|'ne') STRING                                                            # StringOp
+        |   ID op=('eq'|'ne') (STRING|EMPTY)                                                            # StringOp
+        |   ID op=('eq'|'ne') 'null'                                                            # IsNull
         |   ID op=('eq'|'ne'|'gt'|'ge'|'lt'|'le') INT                                           # IntOp
-        |   ID 'is null'                                                                        # IsNull
         |   func=('endswith'|'startswith'|'substringof') '(' ID ',' STRING ')'                  # FuncOp
         |   '(' expr ')'                                                                        # Parens
         ;
@@ -26,6 +26,7 @@ STARTSWITH : 'startswith';
 SUBSTRINGOF: 'substringof';
 
 STRING : '\''.+?'\'';
+EMPTY : '\'\'';
 ID  :   [a-zA-Z]+ ;      // match identifiers
 INT :   [0-9]+ ;         // match integers
 NEWLINE:'\r'? '\n' ;     // return newlines to parser (is end-statement signal)
