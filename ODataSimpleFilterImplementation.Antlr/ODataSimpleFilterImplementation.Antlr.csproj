@@ -6,6 +6,7 @@
     <RepositoryType>Git</RepositoryType>
     <Authors>Ricardo Alcantara</Authors>
     <PackageProjectUrl>https://github.com/ricardoalcantara/ODataSimpleFilterImplementation</PackageProjectUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
