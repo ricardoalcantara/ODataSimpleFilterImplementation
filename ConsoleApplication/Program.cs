@@ -36,6 +36,7 @@ namespace ConsoleApplication
             collection.InsertOne(new User { Name = "Luiza Almeida", Age = 34 });
             collection.InsertOne(new User { Name = "Jorge Tavares", Age = 27 });
             collection.InsertOne(new User { Name = "Lucia Menes", Age = 24 });
+            collection.InsertOne(new User { Name = null, Age = 24 });
 
             Console.WriteLine("Filter=");
             input = Console.ReadLine();

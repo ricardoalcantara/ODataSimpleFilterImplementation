@@ -6,6 +6,7 @@ expr    :   expr op='and' expr                                                  
         |   expr op='or' expr                                                                   # Or
         |   ID op=('eq'|'ne') STRING                                                            # StringOp
         |   ID op=('eq'|'ne'|'gt'|'ge'|'lt'|'le') INT                                           # IntOp
+        |   ID 'is null'                                                                        # IsNull
         |   func=('endswith'|'startswith'|'substringof') '(' ID ',' STRING ')'                  # FuncOp
         |   '(' expr ')'                                                                        # Parens
         ;

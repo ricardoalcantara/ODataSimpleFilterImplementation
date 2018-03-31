@@ -75,6 +75,13 @@ namespace ODataSimpleFilterImplementation.MongoDB
             }
         }
 
+        public override FilterDefinition<T> VisitIsNull([NotNull] FilterParser.IsNullContext context)
+        {
+            string id = context.ID().GetText();
+
+            return _builder.Eq<string>(id, null);
+        }
+
         public override FilterDefinition<T> VisitAnd([NotNull] FilterParser.AndContext context)
         {
             var left = Visit(context.expr(0));

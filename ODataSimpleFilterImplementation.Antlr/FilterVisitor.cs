@@ -79,4 +79,11 @@ public interface IFilterVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitStringOp([NotNull] FilterParser.StringOpContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>IsNull</c>
+	/// labeled alternative in <see cref="FilterParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitIsNull([NotNull] FilterParser.IsNullContext context);
 }
