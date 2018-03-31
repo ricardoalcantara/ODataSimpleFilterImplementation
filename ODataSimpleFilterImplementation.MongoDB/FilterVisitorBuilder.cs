@@ -65,11 +65,11 @@ namespace ODataSimpleFilterImplementation.MongoDB
             switch (func)
             {
                 case FilterParser.STARTSWITH:
-                    return _builder.Regex(id, $"^{str}");
+                    return _builder.Regex(id, new BsonRegularExpression($"^{str}", "i"));
                 case FilterParser.ENDSWITH:
-                    return _builder.Regex(id, $"{str}$");
+                    return _builder.Regex(id, new BsonRegularExpression($"{str}$", "i"));
                 case FilterParser.SUBSTRINGOF:
-                    return _builder.Regex(id, $"{str}");
+                    return _builder.Regex(id, new BsonRegularExpression($"{str}", "i"));
                 default:
                     throw new InvalidOperationException($"Invalid StringOp {context.GetText()}");
             }
